@@ -8,7 +8,7 @@
   <artifactId>babel-transpiler</artifactId>
   <version>1.0.0</version>
   <name>Babel transpiler</name>
-  <description>Utility for executing commands in a terminal.</description>
+  <description>Babel transcription for JavaScript files.</description>
   <url>https://github.com/wniemiec-io-java/babel-transpiler</url>
 
   <properties>

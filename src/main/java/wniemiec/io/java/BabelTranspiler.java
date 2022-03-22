@@ -16,7 +16,8 @@ import java.util.function.Consumer;
 
 
 /**
- * 
+ * Babel transpiler lets you to execute Babel transcription for given 
+ * JavaScript files.
  */
 public class BabelTranspiler {
 
@@ -35,7 +36,7 @@ public class BabelTranspiler {
     //		Constructor
     //-------------------------------------------------------------------------
     /**
-     * 
+     * Babel transcription for JavaScript files.
      * 
      * @param       outputErrorHandler Function to handle with error messages
      */
@@ -44,6 +45,10 @@ public class BabelTranspiler {
         babelScript = new BabelTranspilerScript();
     }
 
+    /**
+     * Babel transcription for JavaScript files. Using this constructor, output
+     * error messages will be ignored.
+     */
     public BabelTranspiler() {
         this(null);
     }
@@ -53,9 +58,9 @@ public class BabelTranspiler {
     //		Methods
     //-------------------------------------------------------------------------
     /**
-     * Generates JavaScript ECMA 5 from a JavaScript ECMA 6 code.
+     * Transpile JavaScript code.
      * 
-     * @param       code JavaScript ECMA 6 code
+     * @param       code JavaScript code
      * 
      * @return      JavaScript code
      * 
@@ -141,7 +146,7 @@ public class BabelTranspiler {
     }
 
     /**
-     * Generates JavaScript ECMA 5 from a JavaScript ECMA 6 code.
+     * Transpile JavaScript code.
      * 
      * @param       file JavaScript file
      * 
