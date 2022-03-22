@@ -6,7 +6,7 @@
 
   <groupId>io.github.wniemiec-io-java</groupId>
   <artifactId>babel-transpiler</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>Babel transpiler</name>
   <description>Babel transcription for JavaScript files.</description>
   <url>https://github.com/wniemiec-io-java/babel-transpiler</url>
@@ -112,9 +112,6 @@
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
-        <configuration>
-          <outputDirectory>${project.basedir}/dist/${version.major}.x</outputDirectory>
-        </configuration>
       </plugin>
 
       <plugin>
@@ -166,6 +163,29 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+
+      <!-- JAR -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>make-assembly</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>${basedir}/src/assembly/distribution.xml</descriptor>
+          </descriptors>
+          <outputDirectory>${basedir}/dist/${version.major}.x</outputDirectory>
+        </configuration>
       </plugin>
       
       <!-- Coverage -->
