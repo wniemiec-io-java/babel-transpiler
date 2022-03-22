@@ -58,7 +58,7 @@ public class BabelTranspiler {
     //		Methods
     //-------------------------------------------------------------------------
     /**
-     * Transpile JavaScript code.
+     * Transpile JavaScript code from a list of string.
      * 
      * @param       code JavaScript code
      * 
@@ -146,7 +146,7 @@ public class BabelTranspiler {
     }
 
     /**
-     * Transpile JavaScript code.
+     * Transpile JavaScript code from a file.
      * 
      * @param       file JavaScript file
      * 

@@ -38,25 +38,27 @@ $ mvn install
 ```
 [...]
 
-import wniemiec.io.java.babel-transpiler;
-import wniemiec.io.java.Standardbabel-transpilerBuilder;
+import wniemiec.io.java.BabelTranspiler;
 
 [...]
 
-babel-transpiler babel-transpiler = Standardbabel-transpilerBuilder
-    .getInstance()
-    .outputHandler(message -> { System.out.println("babel-transpiler said " + message); })
-    .outputErrorHandler(message -> { System.err.println("babel-transpiler said " + message); })
-    .build();
+BabelTranspiler babelTranspiler = new BabelTranspiler(error -> errors.add(error));
 
-babel-transpiler.exec("echo", "hello");
+List<String> code = List.of(
+    "const getMessage = () => \"Hello World\";"
+);
+List<String> transcription = babelTranspiler.fromCode(code);
+
+for (String line : transcription) {
+    System.out.println(line);
+}
 ```
 
 ## 📖 Documentation
 |        Property        |Type|Description|Default|
 |----------------|-------------------------------|-----------------------------|--------|
-|implode |`(list: List<T>, delimiter: String): String`|Converts elements of a list into a string by separating each element with a delimiter| - |
-|capitalize |`(text: String): String`|Converts elements of a list into a string by separating each element with a delimiter| - |
+|fromCode |`(code: List<String>): List<String>`|Transpile JavaScript code from a list of string| - |
+|fromFile |`(file: Path): List<String>`|Transpile JavaScript code from a file.| - |
 
 
 ## 🚩 Changelog
