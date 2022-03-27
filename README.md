@@ -16,6 +16,9 @@
 ## ❇ Introduction
 Babel transpiler lets you to execute Babel transcription for given JavaScript files. 
 
+## ✔ Requiremens
+- [NodeJS](https://nodejs.dev);
+
 ## ❓ How to use
 
 1. Add one of the options below to the pom.xml file: 
