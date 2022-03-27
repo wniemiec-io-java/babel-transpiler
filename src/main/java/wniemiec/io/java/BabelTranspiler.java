@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.function.Consumer;
+import org.apache.commons.io.FileUtils;
 
 
 /**
@@ -73,7 +74,7 @@ public class BabelTranspiler {
         }
         
         setUpTerminal();
-        setUpBabelLocation();
+        setUpBabel();
         setUpTempInputFile(code);
         setUpTempOutputFile();
         runBabel(tempFileInput);
@@ -117,8 +118,46 @@ public class BabelTranspiler {
         return createTempJsFile("outputJsCode");
     }
 
+    private void setUpBabel() throws IOException {
+        setUpBabelLocation();
+        compileBabel();
+    }
+
     private void setUpBabelLocation() throws IOException {
-        babelLocation = babelScript.getLocation();
+        babelLocation = buildBabelTemporaryDirectory();
+        
+        copyBabelToTempDirectory();
+    }
+
+    private void copyBabelToTempDirectory() throws IOException {
+        FileUtils.copyDirectory(babelScript.getLocation().toFile(), babelLocation.toFile());
+    }
+
+    private void compileBabel() throws IOException {
+        cleanBabel();
+        
+        terminal.exec(
+            "npm",
+            "install",
+            "--prefix",
+            babelLocation.toAbsolutePath().toString()
+        );
+    }
+
+    private void cleanBabel() throws IOException {
+        FileUtils.deleteDirectory(getBabelBinLocation().toFile());
+    }
+
+    private Path getBabelBinLocation() {
+        return babelLocation.resolve("node_modules").resolve(".bin");
+    }
+
+    private Path buildBabelTemporaryDirectory() {
+        return getTemporaryDirectory().resolve(babelScript.getFolderName());
+    }
+
+    private Path getTemporaryDirectory() {
+        return Path.of(System.getProperty("java.io.tmpdir"));
     }
 
     private void runBabel(Path jsFile) throws IOException {

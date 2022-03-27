@@ -6,7 +6,7 @@
 
   <groupId>io.github.wniemiec-io-java</groupId>
   <artifactId>babel-transpiler</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <name>Babel transpiler</name>
   <description>Babel transcription for JavaScript files.</description>
   <url>https://github.com/wniemiec-io-java/babel-transpiler</url>
@@ -67,6 +67,12 @@
       <groupId>io.github.wniemiec-io-java</groupId>
       <artifactId>jar-file-manager</artifactId>
       <version>LATEST</version>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.11.0</version>
     </dependency>
   </dependencies>
 

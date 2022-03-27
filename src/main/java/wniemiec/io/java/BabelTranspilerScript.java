@@ -15,11 +15,24 @@ class BabelTranspilerScript {
     //		Attributes
     //-------------------------------------------------------------------------
     private Path location;
+    private static final String FOLDER_NAME;
+
+
+    //-------------------------------------------------------------------------
+    //		Initialization block
+    //-------------------------------------------------------------------------
+    static {
+        FOLDER_NAME = "babel";
+    }
 
     
     //-------------------------------------------------------------------------
     //		Getters
     //-------------------------------------------------------------------------
+    public String getFolderName() {
+        return FOLDER_NAME;
+    }
+
     public Path getLocation() throws IOException {
         if (location == null) {
             location = initializeLocation();
@@ -33,7 +46,7 @@ class BabelTranspilerScript {
 
         return baseDir
             .resolve("javascript")
-            .resolve("babel");
+            .resolve(FOLDER_NAME);
     }
 
     private static Path buildBaseDir() throws IOException {
